@@ -14,12 +14,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.kotlinbasic.ui.theme.KotlinBasicTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         enableEdgeToEdge()
+
         setContent {
             KotlinBasicTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(
+                    modifier = Modifier.fillMaxSize()
+                ) { innerPadding ->
+
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
@@ -27,30 +33,106 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
         week03Variables()
+        week03Functions()
     }
 }
+
 private fun week03Variables() {
-    println("Week 03package:com.kotlinbasic tag:System.out: Variables")
-    val courseName = "Mobile Programming" // Java final keyword
-    //courseName = "DataStructure" -> error
+
+    println("Week 03: Variables")
+
+    val courseName = "Mobile Programming"
+    // courseName = "Data Structure" // error
 
     var week = 2
     week = 3
+
     println("Course : $courseName")
     println("Week : $week")
+
+    println("========= Kotlin Variables =========")
+
+    // val = immutable
+    // var = mutable
+
+    val name = "Android"
+    var version = 8
+
+    println("Hi $name $version")
+
+    val age: Int = 24
+    val height: Double = 177.7
+    val isStudent: Boolean = false
+
+    println(
+        "Age: $age, Height: $height, Student: $isStudent"
+    )
+
+    // var nickname: String = null // error
+
+    var nickname: String? = null
+
+    nickname = "mirae"
+
+    println(
+        "Nickname: $nickname ${nickname?.length}"
+    )
 }
+
+private fun week03Functions() {
+
+    println("========= Kotlin Functions =========")
+
+    fun greet(name: String): String {
+        return "Hello, $name!"
+    }
+
+    fun add(a: Int, b: Int): Int {
+        return a + b
+    }
+
+    fun introduce(
+        name: String,
+        age: Int = 19
+    ) {
+        println(
+            "My name is $name and I'm $age years old"
+        )
+    }
+
+    println(
+        greet("Kotlin")
+    )
+
+    println(
+        "Sum: ${add(5, -71)}"
+    )
+
+    introduce("Kim", 7)
+
+    introduce("Park")
+}
+
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(
+    name: String,
+    modifier: Modifier = Modifier
+) {
+
     Text(
         text = "Hello $name!",
         modifier = modifier
     )
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true
+)
 @Composable
 fun GreetingPreview() {
+
     KotlinBasicTheme {
         Greeting("Android")
     }
