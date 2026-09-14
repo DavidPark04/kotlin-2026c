@@ -27,9 +27,19 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        week03Variables()
     }
 }
+private fun week03Variables() {
+    println("Week 03package:com.kotlinbasic tag:System.out: Variables")
+    val courseName = "Mobile Programming" // Java final keyword
+    //courseName = "DataStructure" -> error
 
+    var week = 2
+    week = 3
+    println("Course : $courseName")
+    println("Week : $week")
+}
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
