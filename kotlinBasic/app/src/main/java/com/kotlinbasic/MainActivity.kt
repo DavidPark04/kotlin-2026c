@@ -1,6 +1,7 @@
 package com.kotlinbasic
 
 import android.os.Bundle
+import android.util.Printer
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.kotlinbasic.ui.theme.KotlinBasicTheme
+import kotlin.math.max
 
 class MainActivity : ComponentActivity() {
 
@@ -72,6 +74,15 @@ private fun week04Collections() {
     mutableFruits.add("banana")
     println("Fruits: $fruits")
     println("Mutable Fruits: $mutableFruits")
+    val scores = mapOf("Kim" to 100, "Park" to 96, "Lee" to 97)
+    println("scores: $scores")
+
+    for(fruit in mutableFruits){
+        println("I like $fruit")
+    }
+
+    scores.forEach {name, score -> println("$name scored $score")}
+    fruits.forEach {fruit -> println("$fruit")}
 }
 
 @Composable
