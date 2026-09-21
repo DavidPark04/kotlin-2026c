@@ -25,7 +25,6 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
-
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
@@ -33,107 +32,52 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-
-        week03Variables()
-        week03Functions()
+        week04Functions()
+        week04Collections()
     }
 }
+private fun week04Functions() {
+    println("======== Kotlin Classes =========")
 
-private fun week03Variables() {
+    class Student{
+        var name: String = ""
+        var age: Int = 0
 
-    println("Week 03: Variables")
+        fun introduce(){
+            println("Hi, I'm $name and I'm $age years old")
+        }
+    }
+    val student1 = Student()
+    student1.name = "Mirae"
+    student1.age = 21
+    student1.introduce()
 
-    val courseName = "Mobile Programming"
-    // courseName = "Data Structure" // error
+    data class Person(val name: String, val age: Int)
 
-    var week = 2
-    week = 3
+    val person1 = Person("Kim", 23)
+    val person2 = Person("Park", 21)
+    println("Person1 : $person1")
+    println("Person1 : ${person1.name}")
+    println("Person1 : ${person1.age}")
+    println("Person2 : $person2")
 
-    println("Course : $courseName")
-    println("Week : $week")
-
-    println("========= Kotlin Variables =========")
-
-    // val = immutable
-    // var = mutable
-
-    val name = "Android"
-    var version = 8
-
-    println("Hi $name $version")
-
-    val age: Int = 24
-    val height: Double = 177.7
-    val isStudent: Boolean = false
-
-    println(
-        "Age: $age, Height: $height, Student: $isStudent"
-    )
-
-    // var nickname: String = null // error
-
-    var nickname: String? = null
-
-    nickname = "mirae"
-
-    println(
-        "Nickname: $nickname ${nickname?.length}"
-    )
 }
 
-private fun week03Functions() {
+private fun week04Collections() {
+    println("========== Kotlin Collections ===========")
 
-    println("========= Kotlin Functions =========")
-
-    fun greet(name: String): String {
-        return "Hello, $name!"
-    }
-
-    fun add(a: Int, b: Int): Int {
-        return a + b
-    }
-
-    fun introduce(
-        name: String,
-        age: Int = 19
-    ) {
-        println(
-            "My name is $name and I'm $age years old"
-        )
-    }
-
-    println(
-        greet("Kotlin")
-    )
-
-    println(
-        "Sum: ${add(5, -71)}"
-    )
-
-    introduce("Kim", 7)
-
-    introduce("Park")
+    val fruits = listOf("apple","banana","orange")
+    val mutableFruits = mutableListOf("kiwi", "watermelon")
+    //fruits.add("kiwi" // imutable
+    mutableFruits.add("banana")
+    println("Fruits: $fruits")
+    println("Mutable Fruits: $mutableFruits")
 }
 
 @Composable
-fun Greeting(
-    name: String,
-    modifier: Modifier = Modifier
-) {
-
+fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
         modifier = modifier
-    )
-}
-
-@Preview(
-    showBackground = true
-)
-@Composable
-fun GreetingPreview() {
-
-    KotlinBasicTheme {
-        Greeting("Android")
-    }
+,    )
 }
